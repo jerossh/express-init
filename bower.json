@@ -1,0 +1,22 @@
+{
+  "name": "kapu",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "jerossh <jerosshen@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jerossh/zhongyu",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.6.3"
+  }
+}

@@ -1,0 +1,10 @@
+doctype
+html
+  head
+    //- title #{title}
+    title!=title
+    include ./include/head
+  body
+    include ./include/header
+    block content
+    include ./include/footer
