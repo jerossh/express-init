@@ -20,6 +20,7 @@
     "express": "^4.14.0",
     "express-session": "^1.14.0",
     "lodash": "^4.15.0",
+    "log4js": "^1.0.1",
     "moment": "^2.14.1",
     "mongoose": "^4.5.9",
     "node-ueditor-qiniu": "^0.3.0",
@@ -28,13 +29,13 @@
     "random-avatar": "^1.0.1",
     "serve-favicon": "^2.3.0",
     "socket.io": "^1.6.0",
-    "ueditor": "^1.2.0",
-    "log4js": "^1.0.1"
+    "ueditor": "^1.2.0"
   },
   "devDependencies": {
     "browser-sync": "^2.14.0",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.1.0",
-    "morgan": "^1.7.0",
+    "gulp-rename": "^1.2.2",
+    "morgan": "^1.7.0"
   }
 }
