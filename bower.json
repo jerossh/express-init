@@ -6,7 +6,7 @@
     "jerossh <jerosshen@gmail.com>"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/jerossh/zhongyu",
+  "homepage": "https://github.com/jerossh/express-init",
   "ignore": [
     "**/.*",
     "node_modules",
