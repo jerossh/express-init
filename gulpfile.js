@@ -6,10 +6,17 @@ const browserSync = require('browser-sync').create('zhongyu');
 const config = require('./config');
 
 // stylus need
-const data = require('gulp-data');
 const stylus = require('gulp-stylus');
 const rename = require('gulp-rename');
 const sourcemaps = require('gulp-sourcemaps');  // 就是开发调试的时候压缩文件映射到源文件
+
+// // 待使用
+// const data = require('gulp-data');        //  数据处理
+// const cache = require('gulp-cached');     // 通过缓存的形式，未修改的文件不放到管道中，针对 css，js
+// const changed = require('gulp-changed');  // 不让未经修改的文件进入管道数据流中，主要针对图片
+// const remember = require('gulp-remember');
+// const newer = require('gulp-newer');
+
 
 // 错误处理
 const plumber = require('gulp-plumber');
@@ -46,7 +53,7 @@ gulp.task('compress', function () {
 // 应用自动重启
 gulp.task('serve', function () {
   nodemon({
-    script: 'app.js',
+    script: 'app',
     ext: 'js',
     ignore: [
       './public/',

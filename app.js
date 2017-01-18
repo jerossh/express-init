@@ -1,11 +1,8 @@
 const express = require('express');
 const app = express();
-const path = require('path');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
-const fs = require('fs');
 const mongoose = require('mongoose');
-const ueditor = require('ueditor');
 const compression = require('compression');
 const logger = require('morgan');
 const multipart = require('connect-multiparty');
@@ -46,7 +43,7 @@ app.locals.moment = require('moment');
 app.locals._env = process.env.NODE_ENV;             // 判定是否开发环境，是就调用本地资源；生产环境则使用 cdn 资源
 
 // 开发使用套件
-if ('development' === app.get('env')){              // 如果是开发环境
+if ('development' === app.get('env')){
   app.set('showStackErr', true)                     // 打印错误信息
   app.use(logger(':method:url:status'))             // 请求相关信息
   app.locals.pretty = true                          // 不压缩源码

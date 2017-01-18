@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema
-var ObjectId = Schema.Types.ObjectId
+const Schema = mongoose.Schema
+const ObjectId = Schema.Types.ObjectId
 
-var BlogSchema = new Schema({
+const BlogSchema = new Schema({
   title: String,
   article: String,
   intro: String,

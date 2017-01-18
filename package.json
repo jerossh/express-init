@@ -22,13 +22,16 @@
     "mongoose": "^4.5.9",
     "path": "^0.12.7",
     "pug": "^2.0.0-beta6",
-    "serve-favicon": "^2.3.0",
+    "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
     "browser-sync": "^2.14.0",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.1.0",
+    "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.4.0",
+    "gulp-stylus": "^2.6.0",
     "morgan": "^1.7.0"
   }
 }
