@@ -17,13 +17,13 @@ mongoose.connect(dburl);
 
 // 模板引擎设置
 app.set('port', process.env.PORT || config.port);   // 设置端口号
-app.set('views', './views/pages');
+app.set('views', './app/views/pages');
 app.set('view engine', 'pug');
 
 // app 串联各种中间件
-app.use(express.static('public'));
+app.use(express.static('./app/public'));
 app.use(compression());
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(favicon(__dirname + '/app/public/images/favicon.ico'));
 app.use(bodyParser.urlencoded({ extended: true }));  // key/value 使用
 app.use(bodyParser.json());
 app.use(multipart());   // 如果有使用 ueditor, 这个上传和 ueditor的上传模块冲突，所以要放在 ueditor后面
@@ -51,7 +51,7 @@ if ('development' === app.get('env')){
 }
 
 // 路由
-require('./routes/router')(app);
+require('./app/routes/router')(app);
 
 // 最后启动程序
 const server = app.listen(app.get('port'), function() {
