@@ -1,4 +1,5 @@
 node_modules
+documents
 app/public/lib
 dist
 *.ini
