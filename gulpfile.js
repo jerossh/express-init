@@ -26,7 +26,7 @@ const paths = {
   'models': './app/models/schemas/*.js',
   'styl': './app/public/dev/stylus/*.styl',
   'css': './app/public/stylesheet/'
-}
+};
 
 // 系统判定，用于win 不能正确 chrome 的 bug
 const openBrowser = (process.platform === 'win32')?false:true;
@@ -62,7 +62,7 @@ gulp.task('serve', function () {
     ],
     env: { 'NODE_ENV': 'development' }
   })
-})
+});
 
 // 前端页面自动刷新
 gulp.task('start', function() {
@@ -75,7 +75,7 @@ gulp.task('start', function() {
       port: 5000                                  // 映射到的地址
   });
   gulp.watch(paths.styl, ['stylus2css']);         // 监控该文件夹， 后面对应的处理任务名
-})
+});
 
 
 gulp.task('build', ['compress']);                 // 针对生产环境的压缩
