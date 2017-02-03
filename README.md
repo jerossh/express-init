@@ -1,7 +1,5 @@
 # express init
 
-## About
-
 This program creates by express + jade + mongodb + stylus(optional)
 
 ## Let's get started
