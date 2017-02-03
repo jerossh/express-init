@@ -2,7 +2,15 @@
 
 ## About
 
-This program creates by express + jade + mongodb
+This program creates by express + jade + mongodb + stylus(optional)
+
+## Let's get started
+
+```
+bower install
+npm install
+gulp
+```
 
 ## History
 

@@ -1,11 +1,10 @@
 'use strict'
-
 const gulp = require('gulp');
 const nodemon = require('gulp-nodemon');
-const browserSync = require('browser-sync').create('zhongyu');
 const config = require('./config');
+const browserSync = require('browser-sync').create(config.name);
 
-// stylus need
+// stylus 使用的插件
 const stylus = require('gulp-stylus');
 const rename = require('gulp-rename');
 const sourcemaps = require('gulp-sourcemaps');  // 就是开发调试的时候压缩文件映射到源文件
@@ -22,7 +21,7 @@ const sourcemaps = require('gulp-sourcemaps');  // 就是开发调试的时候�
 const plumber = require('gulp-plumber');
 
 // 路径定义
-var paths = {
+const paths = {
   'routes': './app/routes/controllers/*.js',
   'models': './app/models/schemas/*.js',
   'styl': './app/public/dev/stylus/*.styl',
@@ -30,7 +29,7 @@ var paths = {
 }
 
 // 系统判定，用于win 不能正确 chrome 的 bug
-var openBrowser = (process.platform === 'win32')?false:true;
+const openBrowser = (process.platform === 'win32')?false:true;
 
 // 编译 stylus，开发模式的调试使用
 gulp.task('stylus2css', function () {
@@ -75,9 +74,9 @@ gulp.task('start', function() {
       notify: false,                              // 浏览器不现实通知，不知道什么意思
       port: 5000                                  // 映射到的地址
   });
-  gulp.watch(paths.styl, ['stylus2css']);
+  gulp.watch(paths.styl, ['stylus2css']);         // 监控该文件夹， 后面对应的处理任务名
 })
 
 
-gulp.task('build', ['compress'])
-gulp.task('default', ['serve', 'start'])
+gulp.task('build', ['compress']);                 // 针对生产环境的压缩
+gulp.task('default', ['serve', 'start']);
