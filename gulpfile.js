@@ -8,7 +8,7 @@ const config = require('./config');
 // const path = require('path');
 
 // stylus need
-const data = require('gulp-data');
+// const data = require('gulp-data');
 const stylus = require('gulp-stylus');
 const rename = require('gulp-rename');
 const sourcemaps = require('gulp-sourcemaps');  // 就是开发调试的时候压缩文件映射到源文件

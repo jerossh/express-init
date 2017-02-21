@@ -32,9 +32,10 @@ app.use(multipart());   // 如果有使用 ueditor, 这个上传和 ueditor的�
 app.use(cookieParser());
 app.use(session({
   secret: config.secret,
-  resave: false,
-  saveUninitialized: true,
+  resave: false,  // 除非修改否则不会重新保存
+  saveUninitialized: false,  // 除非登陆否则不会有 cookie
   cookie: { secure: false, maxAge: 43200000 },
+  // cookie: { domain:'.yourdomain.com'}, 各个子域名中共享
   store: new MongoStore({ url: dburl, collection: 'sessions' })
 }));
 
@@ -51,9 +52,11 @@ if ('development' === app.get('env')){
 }
 
 // 路由
-require('./app/routes/router')(app);
+app.use('/', require('./app/routes/'));
 
-// 最后启动程序
-const server = app.listen(app.get('port'), function() {
-  console.log('网站程序已启动，端口： ' + server.address().port);
-});
+// 如果没有被引用，最后启动程序
+if (!module.parent){
+  const server = app.listen(app.get('port'), function() {
+    console.log('网站程序已启动，端口： ' + server.address().port);
+  });
+}
