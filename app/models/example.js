@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const BlogSchema = require('./schemas/blog')
-const Blog = mongoose.model('Blog', BlogSchema)
+const ExampleSchema = require('./schemas/example');
+const Example = mongoose.model('Example', ExampleSchema);
 
-module.exports = Blog
+module.exports = Example;

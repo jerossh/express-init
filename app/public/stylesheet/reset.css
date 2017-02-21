@@ -34,7 +34,6 @@ ul {
     list-style: none;
 }
 
-
 a, img {
     -webkit-touch-callout: none; /*禁止长按链接与图片弹出菜单*/
 }
@@ -54,10 +53,4 @@ input:focus::-webkit-input-placeholder {
 }
 input::-webkit-input-speech-button {
     display: none; /*隐藏Android的语音输入按钮*/
-}
-
-/*初始化部分结束*/
-.container {
-    width: auto;
-    max-width: 1420px;
 }

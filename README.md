@@ -1,8 +1,14 @@
 # express init
 
-## About
+This program creates by express + jade + mongodb + stylus(optional)
 
-This program creates by express + jade + mongodb
+## Let's get started
+
+```
+bower install
+npm install
+gulp
+```
 
 ## History
 

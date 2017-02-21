@@ -1,15 +1,18 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 const mongoose = require('mongoose');
-const compression = require('compression');
-const logger = require('morgan');
+// const ueditor = require('ueditor');
+const compression = require('compression');      // 压缩
+const config = require('./config')
+const logger = require('morgan');                  // 可以用log4js替换
 const multipart = require('connect-multiparty');
-const cookieParser = require('cookie-parser');   // session 需要用 cookie 配合使用
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);  // 用于本地 session
-const config = require('./config');
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)     // 用于本地 session
+const cookieParser = require('cookie-parser')
 const dburl = 'mongodb://localhost/' + config.name;
 
 // 连接数据库
@@ -19,6 +22,9 @@ mongoose.connect(dburl);
 app.set('port', process.env.PORT || config.port);   // 设置端口号
 app.set('views', './app/views/pages');
 app.set('view engine', 'pug');
+if (!process.env.NODE_ENV) {
+  process.env.NODE_ENV = 'production';
+}
 
 // app 串联各种中间件
 app.use(express.static('./app/public'));
@@ -37,11 +43,12 @@ app.use(session({
   cookie: { secure: false, maxAge: 43200000 },
   // cookie: { domain:'.yourdomain.com'}, 各个子域名中共享
   store: new MongoStore({ url: dburl, collection: 'sessions' })
-}));
+}))
 
 // 本地变量设置，用于前段模板文件
 app.locals.moment = require('moment');
 app.locals._env = process.env.NODE_ENV;             // 判定是否开发环境，是就调用本地资源；生产环境则使用 cdn 资源
+app.locals._info = config.programSetting;           // 定义项目的通用内容，应用于前端
 
 // 开发使用套件
 if ('development' === app.get('env')){
