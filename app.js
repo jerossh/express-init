@@ -17,7 +17,8 @@ const cookieParser = require('cookie-parser')
 const dburl = 'mongodb://localhost/' + config.name;
 
 // 连接数据库
-mongoose.connect(dburl);
+const db = mongoose.connect(dburl);
+db.on('error', console.error.bind(console, 'connect error: '));
 
 // 模板引擎设置
 app.set('port', process.env.PORT || config.port);   // 设置端口号
