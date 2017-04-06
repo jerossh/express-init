@@ -1,6 +1,6 @@
 # 技术栈
 
-This program creates by express + jade + mongodb + stylus(optional)
+本应用由 express + jade + mongodb + stylus(optional)
 
 本应用已包含了大部分 express 需要的资源
 
@@ -23,16 +23,19 @@ git remote remove origin
 ```
 然后你可以添加到自己的仓库
 
+开始项目之前
+
 ```
 bower install
-npm install
+npm install || yarn
 gulp
 ```
 
-## History
+## 更新历史
 
-* 2016-11-28  Finish v0.0.1  init
-* 2017-01-18  Finish v0.1.0  优化 gulp 策略
-* 2017-04-07  Finish v0.2.0  优化缓存策略， 增加 yarn 的支持
+* 2016-11-28   v0.0.1  init
+* 2017-01-18   v0.1.0  优化 gulp 策略
+* 2017-04-07   v0.2.0  优化缓存策略， 增加 yarn 的支持
+
 ## License
 MIT
