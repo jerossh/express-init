@@ -7,6 +7,7 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 // const ueditor = require('ueditor');
 const compression = require('compression');      // 压缩
+const helmet = require('helmet');      // 压缩
 const config = require('./config')
 const logger = require('morgan');                  // 可以用log4js替换
 const multipart = require('connect-multiparty');
@@ -27,6 +28,7 @@ if (!process.env.NODE_ENV) {
 }
 
 // app 串联各种中间件
+app.use(helmet());
 app.use(express.static('./app/public'));
 app.use(compression());
 app.use(favicon(__dirname + '/app/public/images/favicon.ico'));
