@@ -4,7 +4,6 @@ const path         = require('path');
 const favicon      = require('serve-favicon');
 const bodyParser   = require('body-parser');
 const fs           = require('fs');
-const mongoose     = require('mongoose');
 const mysql        = require('mysql');
 // const ueditor = require('ueditor');
 const compression  = require('compression');      // 压缩
@@ -13,12 +12,28 @@ const config       = require('./config')
 const logger       = require('morgan');                  // 可以用log4js替换
 const multipart    = require('connect-multiparty');
 const session      = require('express-session')
-const MongoStore   = require('connect-mongo')(session)     // 用于本地 session
+const Sequelize    = require('sequelize')
+const SequelizeSto = require('connect-session-sequelize')(session.Store);
 const cookieParser = require('cookie-parser')
-const dburl        = 'mongodb://localhost/' + config.name;
 
 // 连接数据库 mongodb
-const mongodb = mongoose.connect(dburl);
+const connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : config.name
+});
+ 
+connection.connect();
+
+const sequelize = new Sequelize(
+config.name,
+"root",
+"root", {
+    "dialect": "sqlite",
+    "storage": "./session.sqlite"
+});
+
 
 
 // 模板引擎设置
@@ -46,7 +61,7 @@ app.use(session({
   saveUninitialized: false,  // 除非登陆否则不会有 cookie
   cookie: { secure: false, maxAge: 43200000 },
   // cookie: { domain:'.yourdomain.com'}, 各个子域名中共享
-  store: new MongoStore({ url: dburl, collection: 'sessions' })
+  store: new SequelizeSto({db: sequelize})
 }))
 
 // 本地变量设置，用于前段模板文件
@@ -59,7 +74,7 @@ if ('development' === app.get('env')){
   app.set('showStackErr', true)                     // 打印错误信息
   app.use(logger(':method:url:status'))             // 请求相关信息
   app.locals.pretty = true                          // 不压缩源码
-  mongoose.set('debug', true)                       // 数据库请求信息
+  // mongoose.set('debug', true)                       // 数据库请求信息
 }
 
 // 路由
