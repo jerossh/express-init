@@ -19,6 +19,7 @@
     "helmet": "^3.5.0",
     "moment": "^2.17.1",
     "mongoose": "^4.9.0",
+    "mysql": "^2.13.0",
     "path": "^0.12.7",
     "pug": "^2.0.0-beta11",
     "serve-favicon": "^2.4.1"
