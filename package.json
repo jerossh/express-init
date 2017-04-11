@@ -31,7 +31,7 @@
     "gulp-nodemon": "^2.1.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^2.5git.1",
+    "gulp-sourcemaps": "^2.5.1",
     "gulp-stylus": "^2.6.0",
     "morgan": "^1.8.1"
   }
