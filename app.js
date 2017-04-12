@@ -8,13 +8,14 @@ const mysql        = require('mysql');
 // const ueditor = require('ueditor');
 const compression  = require('compression');      // 压缩
 const helmet       = require('helmet');      // 压缩
-const config       = require('./config')
 const logger       = require('morgan');                  // 可以用log4js替换
 const multipart    = require('connect-multiparty');
 const session      = require('express-session')
 const Sequelize    = require('sequelize')
 const SequelizeSto = require('connect-session-sequelize')(session.Store);
 const cookieParser = require('cookie-parser')
+
+const config       = require('./config')
 
 // 连接数据库 mongodb
 const connection = mysql.createConnection({
@@ -61,7 +62,8 @@ app.use(session({
   saveUninitialized: false,  // 除非登陆否则不会有 cookie
   cookie: { secure: false, maxAge: 43200000 },
   // cookie: { domain:'.yourdomain.com'}, 各个子域名中共享
-  store: new SequelizeSto({db: sequelize})
+  store: new SequelizeSto({db: sequelize}),
+  proxy: false
 }))
 
 // 本地变量设置，用于前段模板文件
@@ -82,7 +84,7 @@ app.use('/', require('./app/routes/'));
 
 // 如果没有被引用，最后启动程序
 if (!module.parent){
-  const server = app.listen(app.get('port'), function() {
+  const server = app.listen(1999, function() {
     console.log('网站程序已启动，端口： ' + server.address().port);
   });
 }

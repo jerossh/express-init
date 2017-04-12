@@ -27,3 +27,5 @@ const c = {
 
   }
 }
+
+module.exports = c;
