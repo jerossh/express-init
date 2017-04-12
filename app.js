@@ -19,8 +19,8 @@ const cookieParser = require('cookie-parser')
 // 连接数据库 mongodb
 const connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'root',
-  password : '',
+  user     : 'user1',
+  password : '123456,./',
   database : config.name
 });
  
@@ -28,8 +28,8 @@ connection.connect();
 
 const sequelize = new Sequelize(
 config.name,
-"root",
-"root", {
+"user1",
+"123456,./", {
     "dialect": "sqlite",
     "storage": "./session.sqlite"
 });
