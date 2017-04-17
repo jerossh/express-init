@@ -17,7 +17,7 @@ const cookieParser = require('cookie-parser')
 
 const config       = require('./config')
 
-// 连接数据库 mongodb
+// 连接数据库 mysql
 const connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'user1',
@@ -66,7 +66,7 @@ app.use(session({
   proxy: false
 }))
 
-// 本地变量设置，用于前段模板文件
+// 本地变量设置，用于前端模板文件
 app.locals.moment = require('moment');
 app.locals._env = process.env.NODE_ENV;             // 判定是否开发环境，是就调用本地资源；生产环境则使用 cdn 资源
 app.locals._info = config.programSetting;           // 定义项目的通用内容，应用于前端
