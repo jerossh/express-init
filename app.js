@@ -49,7 +49,7 @@ app.use(session({
   store: new MongoStore({ url: dburl, collection: 'sessions' })
 }))
 
-// 本地变量设置，用于前段模板文件
+// 本地变量设置，用于前端模板文件
 app.locals.moment = require('moment');
 app.locals._env = process.env.NODE_ENV;             // 判定是否开发环境，是就调用本地资源；生产环境则使用 cdn 资源
 app.locals._info = config.programSetting;           // 定义项目的通用内容，应用于前端
