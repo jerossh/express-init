@@ -23,6 +23,10 @@ git remote remove origin
 ```
 然后你可以添加到自己的仓库
 
+```
+git remote add 你仓库的地址
+```
+
 开始项目之前
 
 ```
